@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
    PYTHONUNBUFFERED=1
@@ -17,7 +17,7 @@ RUN apt-get update && \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt && \
     python -m pip install --no-cache-dir --upgrade pip "setuptools>=78.1.1" wheel && \
-    find /usr/local/lib/python3.10/site-packages/pip -name "bom.cdx.json" -delete
+    find /usr/local/lib/python3.11/site-packages/pip -name "bom.cdx.json" -delete
 
 COPY . .
 RUN chown -R appuser:appgroup /app
